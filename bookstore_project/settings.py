@@ -128,3 +128,6 @@ STATIC_URL = '/static/'
 
 # directing django to user our custom user model instead of builtin
 AUTH_USER_MODEL = 'users.CustomUser'
+LOGIN_REDIRECT_URL = 'home'
+
+LOGOUT_REDIRECT_URL = 'home'
