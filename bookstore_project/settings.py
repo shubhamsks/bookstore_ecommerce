@@ -37,6 +37,11 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+
+    # third party
+        
+    'crispy_forms',
+
     # local
     'users.apps.UsersConfig',
     'pages.apps.PagesConfig',
@@ -125,9 +130,19 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/2.2/howto/static-files/
 
 STATIC_URL = '/static/'
+STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static'),]  #this is for serving static files in local development
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles') # this is for serving static files in production
+
+STATICFILES_FINDERS = [
+    'django.contrib.staticfiles.finders.FileSystemFinder',
+    'django.contrib.staticfiles.finders.AppDirectoriesFinder',
+]
 
 # directing django to user our custom user model instead of builtin
 AUTH_USER_MODEL = 'users.CustomUser'
 LOGIN_REDIRECT_URL = 'home'
 
 LOGOUT_REDIRECT_URL = 'home'
+
+# django crispy forms
+CRISPY_TEMPLATE_PACK = 'bootstrap4'
